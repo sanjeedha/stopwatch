@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stopwatch</title>
+
+    <script>
+var d = new Date();
+var second = 0;
+var minutes = 0;
+var hours = 0;
+
+console.log(d.getDate());
+
+var stop_timer = function(){
+    second = 0;
+    minutes = 0;
+   hours = 0;
+}
+var start_timer = function(){
+    second++;
+    if(second>=60){
+        minutes++;
+        second=0;
+        if(minutes>60){
+            hours++;
+            minutes=0;
+        }
+    }
+    document.getElementById("Hours").innerHTML = hours;
+    document.getElementById("Minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = second;
+    console.log(second + minutes + hours);
+    timer();
+}
+function timer() {
+    t = setTimeout(start_timer, 1000);
+}
+    </script>
+</head>
+<body>
+
+<span id="Hours">00</span>:<span id="Minutes">00</span>:<span id="seconds">00</span>
+<button id="start" onclick="start_timer()">START</button>
+<button id="stop" onclick="stop_timer()">STOP</button>
+
+</body>
+</html>
